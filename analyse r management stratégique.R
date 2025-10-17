@@ -8,7 +8,7 @@ library(sandwich)# pour des erreurs robustes
 library(ggplot2)
 
 #importation de la base de données ----
-base_finale_1<- read.csv("C:/Users/alexi/Downloads/base_finale_1 (1).xls", header = TRUE, sep = ",")
+base_finale_1<- read.csv("C:/Users/alexi/Downloads/base_finale_1 (1).xls", header = TRUE, sep = ",")#les donées sont issues des rapports agrégés de la commission européenne(EU Industrial R&D Investment Scoreboard)
 panel <- pdata.frame(base_finale_1, index = c("Entreprise", "Année"))
 panel$Employés[panel$Année == 2017]<-panel$Employés[panel$Année == 2017]*1000#correction d'une valeur sur l'année 2017(inconsistence des données de la commission européenne)
 panel$Entreprise <- as.character(panel$Entreprise)  # convertir en caractère
@@ -124,3 +124,4 @@ moyenne_intensite <- panel %>%
   arrange(desc(Intensite_moyenne))
 
 View(moyenne_intensite)#modèle non pertinent à cause du poids des start-up 
+
